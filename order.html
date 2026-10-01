@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopProject — Оформление заявки</title>
+    <meta
+      name="description"
+      content="Оставьте заявку в ShopProject. Быстрая обработка и обратный звонок."
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="site-header">
+        <a class="site-logo" href="index.html">ShopProject</a>
+        <nav class="site-nav" aria-label="Основная навигация">
+          <ul class="site-nav__list">
+            <li><a href="index.html" class="site-nav__link">Главная</a></li>
+            <li><a href="catalog.html" class="site-nav__link">Каталог</a></li>
+            <li><a href="product.html" class="site-nav__link">Товар</a></li>
+            <li><a href="order.html" class="site-nav__link site-nav__link--active">Заявка</a></li>
+            <li><a href="contacts.html" class="site-nav__link">Контакты</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <h1>Оформление заявки</h1>
+        <p>Заполните форму, и наш менеджер свяжется с вами в течение 15 минут.</p>
+
+        <form class="order-form order-form--page" id="order-form-page" action="#" method="post" novalidate>
+          <div class="form-field">
+            <label for="page-name">Имя *</label>
+            <input id="page-name" name="name" type="text" placeholder="Иван Иванов" minlength="2" required />
+          </div>
+
+          <div class="form-field">
+            <label for="page-email">E-mail *</label>
+            <input id="page-email" name="email" type="email" placeholder="ivan@example.com" required />
+          </div>
+
+          <div class="form-field">
+            <label for="page-phone">Телефон *</label>
+            <input
+              id="page-phone"
+              name="phone"
+              type="tel"
+              inputmode="tel"
+              placeholder="+7 (900) 000-00-00"
+              pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
+              required
+            />
+            <small>Формат: +7 (900) 000-00-00</small>
+          </div>
+
+          <div class="form-field">
+            <label for="page-topic">Тема заявки *</label>
+            <select id="page-topic" name="topic" required>
+              <option value="">Выберите тему</option>
+              <option value="product">Заказ товара</option>
+              <option value="consultation">Консультация</option>
+              <option value="delivery">Доставка</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="page-comment">Комментарий</label>
+            <textarea id="page-comment" name="comment" rows="4" placeholder="Дополнительные пожелания"></textarea>
+          </div>
+
+          <div class="form-field form-field--checkbox">
+            <label>
+              <input id="page-agreement" name="agreement" type="checkbox" required />
+              Я согласен на обработку персональных данных *
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="button">Отправить заявку</button>
+            <button type="reset">Очистить</button>
+          </div>
+        </form>
+
+        <p class="success-message" id="success-message-page" hidden>
+          Форма успешно отправлена!
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p>&copy; 2026 ShopProject. Все права защищены.</p>
+        <p>Дисциплина: фронтенд и бэкенд разработка</p>
+        <nav class="site-footer__nav">
+          <a href="index.html">Главная</a>
+          <a href="catalog.html">Каталог</a>
+          <a href="order.html">Заявка</a>
+          <a href="contacts.html">Контакты</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script>
+      // Обработка формы на странице order.html
+      (function () {
+        const form = document.getElementById('order-form-page');
+        const success = document.getElementById('success-message-page');
+        if (!form) return;
+
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+          const elements = Array.from(form.elements);
+
+          elements.forEach(function (el) {
+            if (el.willValidate) el.removeAttribute('aria-invalid');
+          });
+
+          if (!form.checkValidity()) {
+            elements.forEach(function (el) {
+              if (el.willValidate && !el.checkValidity()) {
+                el.setAttribute('aria-invalid', 'true');
+              }
+            });
+            form.reportValidity();
+            return;
+          }
+
+          success.hidden = false;
+          form.reset();
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopProject — Контакты</title>
+    <meta
+      name="description"
+      content="Контактная информация ShopProject: адрес, телефон, email и форма обратной связи."
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="site-header">
+        <a class="site-logo" href="index.html">ShopProject</a>
+        <nav class="site-nav" aria-label="Основная навигация">
+          <ul class="site-nav__list">
+            <li><a href="index.html" class="site-nav__link">Главная</a></li>
+            <li><a href="catalog.html" class="site-nav__link">Каталог</a></li>
+            <li><a href="product.html" class="site-nav__link">Товар</a></li>
+            <li><a href="order.html" class="site-nav__link">Заявка</a></li>
+            <li><a href="contacts.html" class="site-nav__link site-nav__link--active">Контакты</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <h1>Контакты</h1>
+        <p>Мы всегда рады помочь вам. Свяжитесь с нами удобным способом.</p>
+
+        <div class="contacts-layout">
+          <aside class="contacts-info">
+            <h2 class="contacts-info__title">Наши контакты</h2>
+            <ul class="contacts-info__list">
+              <li><strong>Адрес:</strong> г. Москва, ул. Программистов, д. 1</li>
+              <li><strong>Телефон:</strong> <a href="tel:+74951234567">+7 (495) 123-45-67</a></li>
+              <li><strong>E-mail:</strong> <a href="mailto:info@shopproject.ru">info@shopproject.ru</a></li>
+              <li><strong>Режим работы:</strong> Пн–Пт: 9:00–20:00, Сб–Вс: 10:00–18:00</li>
+            </ul>
+          </aside>
+
+          <form class="order-form" id="feedback-form" action="#" method="post" novalidate>
+            <h2 class="order-form__title">Форма обратной связи</h2>
+
+            <div class="form-field">
+              <label for="c-name">Имя *</label>
+              <input id="c-name" name="name" type="text" minlength="2" required />
+            </div>
+
+            <div class="form-field">
+              <label for="c-email">E-mail *</label>
+              <input id="c-email" name="email" type="email" required />
+            </div>
+
+            <div class="form-field">
+              <label for="c-message">Сообщение *</label>
+              <textarea id="c-message" name="message" rows="5" required></textarea>
+            </div>
+
+            <div class="form-field form-field--checkbox">
+              <label>
+                <input id="c-agreement" name="agreement" type="checkbox" required />
+                Я согласен на обработку персональных данных *
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="button">Отправить</button>
+            </div>
+          </form>
+        </div>
+
+        <p class="success-message" id="success-message-contacts" hidden>
+          Сообщение успешно отправлено!
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p>&copy; 2026 ShopProject. Все права защищены.</p>
+        <p>Дисциплина: фронтенд и бэкенд разработка</p>
+        <nav class="site-footer__nav">
+          <a href="index.html">Главная</a>
+          <a href="catalog.html">Каталог</a>
+          <a href="order.html">Заявка</a>
+          <a href="contacts.html">Контакты</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script>
+      // Обработка формы обратной связи
+      (function () {
+        const form = document.getElementById('feedback-form');
+        const success = document.getElementById('success-message-contacts');
+        if (!form) return;
+
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+          const elements = Array.from(form.elements);
+
+          elements.forEach(function (el) {
+            if (el.willValidate) el.removeAttribute('aria-invalid');
+          });
+
+          if (!form.checkValidity()) {
+            elements.forEach(function (el) {
+              if (el.willValidate && !el.checkValidity()) {
+                el.setAttribute('aria-invalid', 'true');
+              }
+            });
+            form.reportValidity();
+            return;
+          }
+
+          success.hidden = false;
+          form.reset();
+        });
+      })();
+    </script>
+  </body>
+</html>

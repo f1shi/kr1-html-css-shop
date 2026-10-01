@@ -1,17 +1,18 @@
-# Системные файлы
+# OS
 .DS_Store
 Thumbs.db
 
-# Настройки редактора
+# IDE
 .vscode/
+.idea/
+*.swp
 
 # Логи
 *.log
 
+# Зависимости
+node_modules/
+
 # Временные файлы
 *.tmp
-*.temp
-
-# Переменные окружения
-.env
-.env.*
+.cache/

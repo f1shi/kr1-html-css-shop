@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Учебный интернет-магазин</title>
+    <title>ShopProject — Учебный интернет-магазин</title>
+    <meta
+      name="description"
+      content="ShopProject — учебный интернет-магазин. Смартфоны, ноутбуки, аксессуары по выгодным ценам."
+    />
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/main.js" defer></script>
   </head>
@@ -13,94 +17,111 @@
         <a class="site-logo" href="index.html">ShopProject</a>
         <nav class="site-nav" aria-label="Основная навигация">
           <ul class="site-nav__list">
-            <li><a href="index.html">Главная</a></li>
-            <li><a href="#popular">Популярные товары</a></li>
-            <li><a href="#advantages">Преимущества</a></li>
-            <li><a href="#contacts">Контакты</a></li>
+            <li><a href="index.html" class="site-nav__link site-nav__link--active">Главная</a></li>
+            <li><a href="catalog.html" class="site-nav__link">Каталог</a></li>
+            <li><a href="product.html" class="site-nav__link">Товар</a></li>
+            <li><a href="order.html" class="site-nav__link">Заявка</a></li>
+            <li><a href="contacts.html" class="site-nav__link">Контакты</a></li>
           </ul>
         </nav>
       </div>
     </header>
 
     <main>
+      <!-- HERO -->
       <section class="hero">
         <h1>Учебный интернет-магазин</h1>
         <p>
-          Это стартовая страница учебного frontend-проекта. В дальнейшем на её
-          основе будет разработан многостраничный сайт интернет-магазина или
-          каталога услуг.
+          Это стартовая страница учебного frontend-проекта. Здесь вы найдёте
+          популярные товары, преимущества магазина и сможете оставить заявку.
         </p>
         <a class="button" href="#popular">Перейти к товарам</a>
       </section>
 
+      <!-- ПРЕИМУЩЕСТВА (якорь) -->
       <section class="section" id="advantages">
         <h2>Преимущества проекта</h2>
         <ul class="advantages-list">
           <li>понятная HTML-структура;</li>
           <li>семантические блоки страницы;</li>
           <li>подключение внешнего CSS-файла;</li>
-          <li>подготовка к разработке многостраничного сайта.</li>
+          <li>многостраничная архитектура сайта.</li>
         </ul>
       </section>
 
+      <!-- ПОПУЛЯРНЫЕ ТОВАРЫ (якорь) -->
       <section class="section" id="popular">
         <h2>Популярные товары</h2>
 
-        <article class="product-card">
-          <h3>Товар 1</h3>
-          <p>Краткое описание учебного товара.</p>
-          <p>Цена: 1000 руб.</p>
-          <button
-            class="button product-card__button"
-            type="button"
-            data-product="Товар 1"
-          >
-            Заказать
-          </button>
-        </article>
+        <div class="product-grid">
+          <article class="product-card product-card--hit">
+            <span class="product-card__badge product-card__badge--hit">Хит</span>
+            <h3>Смартфон Galaxy X</h3>
+            <p>Краткое описание учебного товара.</p>
+            <p class="product-card__price">Цена: 54 990 руб.</p>
+            <button
+              class="button product-card__button"
+              type="button"
+              data-product="Смартфон Galaxy X"
+            >
+              Заказать
+            </button>
+          </article>
 
-        <article class="product-card">
-          <h3>Товар 2</h3>
-          <p>Краткое описание учебного товара.</p>
-          <p>Цена: 1500 руб.</p>
-          <button
-            class="button product-card__button"
-            type="button"
-            data-product="Товар 2"
-          >
-            Заказать
-          </button>
-        </article>
+          <article class="product-card product-card--discount">
+            <span class="product-card__badge product-card__badge--discount">Скидка</span>
+            <h3>Ноутбук ProBook 15</h3>
+            <p>Краткое описание учебного товара.</p>
+            <p class="product-card__price">Цена: 89 990 руб.</p>
+            <button
+              class="button product-card__button"
+              type="button"
+              data-product="Ноутбук ProBook 15"
+            >
+              Заказать
+            </button>
+          </article>
 
-        <article class="product-card">
-          <h3>Товар 3</h3>
-          <p>Краткое описание учебного товара.</p>
-          <p>Цена: 2000 руб.</p>
-          <button
-            class="button product-card__button"
-            type="button"
-            data-product="Товар 3"
-          >
-            Заказать
-          </button>
-        </article>
+          <article class="product-card product-card--new">
+            <span class="product-card__badge product-card__badge--new">Новинка</span>
+            <h3>Наушники AirSound</h3>
+            <p>Краткое описание учебного товара.</p>
+            <p class="product-card__price">Цена: 12 990 руб.</p>
+            <button
+              class="button product-card__button"
+              type="button"
+              data-product="Наушники AirSound"
+            >
+              Заказать
+            </button>
+          </article>
+        </div>
       </section>
 
+      <!-- ASIDE -->
       <aside class="aside-info">
         <h2>Информация для студентов</h2>
         <p>
-          На следующих практических занятиях этот проект будет расширяться:
-          появятся формы, модальное окно, дополнительные страницы, Flex/Grid,
-          БЭМ-структура и адаптивная версия сайта.
+          Проект расширяется: добавлены страницы каталога, карточки товара,
+          формы заявки и контактов, Flex/Grid, БЭМ-структура и адаптивная версия.
         </p>
       </aside>
     </main>
 
-    <footer id="contacts">
-      <p>&copy; 2026 Учебный проект. Все права защищены.</p>
-      <p>Дисциплина: фронтенд и бэкенд разработка</p>
+    <footer id="contacts" class="site-footer">
+      <div class="site-footer__inner">
+        <p>&copy; 2026 ShopProject. Все права защищены.</p>
+        <p>Дисциплина: фронтенд и бэкенд разработка</p>
+        <nav class="site-footer__nav">
+          <a href="index.html">Главная</a>
+          <a href="catalog.html">Каталог</a>
+          <a href="order.html">Заявка</a>
+          <a href="contacts.html">Контакты</a>
+        </nav>
+      </div>
     </footer>
 
+    <!-- МОДАЛЬНОЕ ОКНО -->
     <dialog
       class="order-dialog"
       id="order-dialog"

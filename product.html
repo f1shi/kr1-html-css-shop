@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopProject — Смартфон Galaxy X</title>
+    <meta
+      name="description"
+      content="Смартфон Galaxy X: 6.5 AMOLED, 128 ГБ, 8 ГБ ОЗУ. Характеристики, цена, заказ."
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="site-header">
+        <a class="site-logo" href="index.html">ShopProject</a>
+        <nav class="site-nav" aria-label="Основная навигация">
+          <ul class="site-nav__list">
+            <li><a href="index.html" class="site-nav__link">Главная</a></li>
+            <li><a href="catalog.html" class="site-nav__link">Каталог</a></li>
+            <li><a href="product.html" class="site-nav__link site-nav__link--active">Товар</a></li>
+            <li><a href="order.html" class="site-nav__link">Заявка</a></li>
+            <li><a href="contacts.html" class="site-nav__link">Контакты</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <!-- Хлебные крошки -->
+        <nav class="breadcrumbs" aria-label="Хлебные крошки">
+          <a href="index.html">Главная</a> /
+          <a href="catalog.html">Каталог</a> /
+          <span>Смартфон Galaxy X</span>
+        </nav>
+
+        <div class="product-detail">
+          <div class="product-detail__image" aria-hidden="true">📱</div>
+          <div class="product-detail__info">
+            <h1 class="product-detail__title">Смартфон Galaxy X</h1>
+            <p class="product-detail__price">54 990 руб.</p>
+            <p class="product-detail__description">
+              Флагманский смартфон с ярким AMOLED-дисплеем 6.5", производительным
+              процессором и тройной камерой. Идеальный выбор для работы и
+              развлечений.
+            </p>
+            <button
+              class="button product-card__button"
+              type="button"
+              data-product="Смартфон Galaxy X"
+            >
+              Оставить заявку
+            </button>
+          </div>
+        </div>
+
+        <!-- ТАБЛИЦА ХАРАКТЕРИСТИК -->
+        <h2>Характеристики</h2>
+        <table class="specs-table">
+          <caption>Технические характеристики Galaxy X</caption>
+          <thead>
+            <tr>
+              <th scope="col">Параметр</th>
+              <th scope="col">Значение</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Дисплей</td><td>6.5" AMOLED, 2400×1080</td></tr>
+            <tr><td>Процессор</td><td>Octa-core 2.8 ГГц</td></tr>
+            <tr><td>Оперативная память</td><td>8 ГБ</td></tr>
+            <tr><td>Встроенная память</td><td>128 ГБ</td></tr>
+            <tr><td>Камера</td><td>50 МП + 12 МП + 8 МП</td></tr>
+            <tr><td>Аккумулятор</td><td>5000 мА·ч</td></tr>
+            <tr><td>ОС</td><td>Android 14</td></tr>
+          </tbody>
+        </table>
+
+        <!-- ОТЗЫВЫ (самостоятельная доработка) -->
+        <h2>Отзывы</h2>
+        <div class="reviews">
+          <article class="review">
+            <p class="review__author">Анна К.</p>
+            <p class="review__text">Отличный смартфон! Быстрый, батарея держит два дня.</p>
+          </article>
+          <article class="review">
+            <p class="review__author">Игорь М.</p>
+            <p class="review__text">Камера супер, экран яркий. Рекомендую.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p>&copy; 2026 ShopProject. Все права защищены.</p>
+        <p>Дисциплина: фронтенд и бэкенд разработка</p>
+        <nav class="site-footer__nav">
+          <a href="index.html">Главная</a>
+          <a href="catalog.html">Каталог</a>
+          <a href="order.html">Заявка</a>
+          <a href="contacts.html">Контакты</a>
+        </nav>
+      </div>
+    </footer>
+
+    <!-- МОДАЛЬНОЕ ОКНО -->
+    <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
+      <h2 id="order-dialog-title">Оформление заявки</h2>
+      <form class="order-form" id="order-form" action="#" method="post" novalidate>
+        <input id="selected-product" name="selected-product" type="hidden" />
+
+        <div class="form-field">
+          <label for="order-name">Имя</label>
+          <input id="order-name" name="name" type="text" minlength="2" required />
+        </div>
+        <div class="form-field">
+          <label for="order-email">E-mail</label>
+          <input id="order-email" name="email" type="email" required />
+        </div>
+        <div class="form-field">
+          <label for="order-phone">Телефон</label>
+          <input
+            id="order-phone"
+            name="phone"
+            type="tel"
+            inputmode="tel"
+            placeholder="+7 (900) 000-00-00"
+            pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
+            required
+          />
+          <small>Формат: +7 (900) 000-00-00</small>
+        </div>
+        <div class="form-field">
+          <label for="order-topic">Тема заявки</label>
+          <select id="order-topic" name="topic" required>
+            <option value="">Выберите тему</option>
+            <option value="product">Заказ товара</option>
+            <option value="consultation">Консультация</option>
+            <option value="delivery">Доставка</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="order-comment">Комментарий</label>
+          <textarea id="order-comment" name="comment" rows="4"></textarea>
+        </div>
+        <div class="form-field form-field--checkbox">
+          <label>
+            <input id="order-agreement" name="agreement" type="checkbox" required />
+            Я согласен на обработку данных
+          </label>
+        </div>
+        <div class="form-actions">
+          <button type="button" id="close-order-dialog">Закрыть</button>
+          <button type="submit">Отправить заявку</button>
+        </div>
+      </form>
+    </dialog>
+
+    <p class="success-message" id="success-message" hidden>
+      Форма успешно отправлена!
+    </p>
+  </body>
+</html>
