@@ -74,3 +74,4 @@ GitHub Pages: https://f1shi.github.io/kr1-html-css-shop/
 
 ФИО: Рыбаков Фёдор Иванович
 Группа: эфбо-09-25
+ИРИП
