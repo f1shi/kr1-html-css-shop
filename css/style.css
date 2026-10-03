@@ -3,7 +3,6 @@
    =================================== */
 
 :root {
-  /* Основные цвета */
   --color-bg: #ffffff;
   --color-text: #222222;
   --color-muted: #666666;
@@ -17,19 +16,16 @@
   --color-success-bg: #eefaf0;
   --color-white: #ffffff;
 
-  /* Отступы */
   --space-xs: 4px;
   --space-sm: 8px;
   --space-md: 16px;
   --space-lg: 24px;
   --space-xl: 32px;
 
-  /* Скругления */
   --radius-sm: 6px;
   --radius-md: 8px;
   --radius-lg: 12px;
 
-  /* Размеры */
   --container-width: 1100px;
 }
 
@@ -53,21 +49,8 @@ body {
   background-color: var(--color-bg);
 }
 
-header,
-main,
-footer {
+main {
   padding: var(--space-lg);
-}
-
-header {
-  background-color: var(--color-surface);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-footer {
-  background-color: var(--color-surface);
 }
 
 /* ===================================
@@ -87,20 +70,44 @@ a:focus-visible {
   outline-offset: 3px;
 }
 
+/* ===================================
+   4. Блок button
+   =================================== */
+
 .button {
   display: inline-block;
   padding: var(--space-sm) var(--space-md);
-  color: var(--color-white);
-  background-color: var(--color-primary);
-  text-decoration: none;
   border: none;
   border-radius: var(--radius-sm);
-  cursor: pointer;
   font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    color 0.2s,
+    background-color 0.2s,
+    border-color 0.2s;
 }
 
-.button:hover {
+.button--primary {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+}
+
+.button--primary:hover {
+  color: var(--color-white);
   background-color: var(--color-primary-dark);
+  text-decoration: none;
+}
+
+.button--outline {
+  color: var(--color-primary);
+  background-color: transparent;
+  border: 1px solid var(--color-primary);
+}
+
+.button--outline:hover {
+  color: var(--color-white);
+  background-color: var(--color-primary);
   text-decoration: none;
 }
 
@@ -109,18 +116,27 @@ a:focus-visible {
   outline-offset: 3px;
 }
 
-.button:disabled {
+.button:disabled,
+.button--disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
 /* ===================================
-   4. Компоненты страницы
+   5. Блок site-header
    =================================== */
 
 .site-header {
+  background-color: var(--color-surface);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.site-header__inner {
   max-width: var(--container-width);
   margin: 0 auto;
+  padding: var(--space-lg);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -128,14 +144,17 @@ a:focus-visible {
   gap: var(--space-md);
 }
 
-.site-logo {
+.site-header__logo {
   font-weight: bold;
   text-decoration: none;
   color: var(--color-text);
   font-size: 1.25rem;
 }
 
-/* Flexbox-навигация (Практика №6) */
+/* ===================================
+   6. Блок site-nav
+   =================================== */
+
 .site-nav__list {
   display: flex;
   flex-wrap: wrap;
@@ -147,7 +166,7 @@ a:focus-visible {
   list-style: none;
 }
 
-.site-nav__list a {
+.site-nav__link {
   display: inline-block;
   padding: var(--space-sm) var(--space-md);
   color: var(--color-primary);
@@ -158,16 +177,25 @@ a:focus-visible {
     background-color 0.2s;
 }
 
-.site-nav__list a:hover {
+.site-nav__link:hover {
   color: var(--color-white);
   background-color: var(--color-primary);
   text-decoration: none;
+}
+
+.site-nav__link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
 }
 
 .site-nav__link--active {
   font-weight: bold;
   color: var(--color-primary-dark);
 }
+
+/* ===================================
+   7. Блок hero
+   =================================== */
 
 .hero {
   max-width: var(--container-width);
@@ -176,6 +204,18 @@ a:focus-visible {
   background-color: var(--color-surface-accent);
   border-radius: var(--radius-lg);
 }
+
+.hero__title {
+  margin-top: 0;
+}
+
+.hero__text {
+  color: var(--color-muted);
+}
+
+/* ===================================
+   8. Блок section
+   =================================== */
 
 .section {
   max-width: var(--container-width);
@@ -187,7 +227,7 @@ a:focus-visible {
 }
 
 /* ===================================
-   5. Карточки товаров + сетка (CSS Grid)
+   9. Блок products-grid + product-card
    =================================== */
 
 .products-grid,
@@ -216,8 +256,16 @@ a:focus-visible {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.product-card h3 {
-  margin-top: 0;
+.product-card__title {
+  margin: 0;
+  font-size: 1.125rem;
+  color: var(--color-text);
+}
+
+.product-card__description {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.95rem;
 }
 
 .product-card__price {
@@ -232,7 +280,7 @@ a:focus-visible {
   text-align: center;
 }
 
-/* Бейджи (position: absolute) */
+/* Бейджи */
 .product-card__badge {
   position: absolute;
   top: var(--space-sm);
@@ -269,7 +317,7 @@ a:focus-visible {
 }
 
 /* ===================================
-   6. ASIDE / Информационные блоки
+   10. Блок aside-info
    =================================== */
 
 .aside-info {
@@ -285,7 +333,7 @@ a:focus-visible {
 }
 
 /* ===================================
-   7. Каталог: сетка с фильтрами (CSS Grid)
+   11. Блок catalog-layout + catalog-filters + catalog-products
    =================================== */
 
 .catalog-layout {
@@ -317,54 +365,33 @@ a:focus-visible {
   font-size: 1.25rem;
 }
 
-.catalog-filters__subtitle {
-  font-size: 1rem;
-  margin: var(--space-md) 0 var(--space-sm);
-}
+/* ===================================
+   12. Блок filters-form
+   =================================== */
 
-.catalog-filters__list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.catalog-filters__list li {
-  margin-bottom: var(--space-xs);
-}
-
-.catalog-filters input[type="number"] {
-  width: 100%;
-  padding: var(--space-xs) var(--space-sm);
-  margin-bottom: var(--space-sm);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  font: inherit;
-}
-
-/* Форма фильтров (Практика №6) */
 .filters-form {
   display: grid;
   gap: var(--space-md);
 }
 
-.filters-form fieldset {
+.filters-form__group {
   margin: 0;
   padding: var(--space-md);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
 }
 
-.filters-form legend {
+.filters-form__legend {
   font-weight: 700;
   padding: 0 var(--space-xs);
 }
 
-.filters-form label {
+.filters-form__label {
   display: block;
   margin-bottom: var(--space-sm);
 }
 
-.filters-form input[type="number"] {
+.filters-form__input {
   width: 100%;
   padding: 8px 10px;
   border: 1px solid var(--color-border);
@@ -373,7 +400,7 @@ a:focus-visible {
 }
 
 /* ===================================
-   8. Карточка товара (детальная)
+   13. Блок breadcrumbs
    =================================== */
 
 .breadcrumbs {
@@ -382,14 +409,18 @@ a:focus-visible {
   font-size: 0.9rem;
 }
 
-.breadcrumbs a {
+.breadcrumbs__link {
   color: var(--color-primary);
 }
 
-.breadcrumbs span::before {
+.breadcrumbs__current::before {
   content: " / ";
   color: var(--color-muted);
 }
+
+/* ===================================
+   14. Блок product-detail
+   =================================== */
 
 .product-detail {
   display: grid;
@@ -425,7 +456,7 @@ a:focus-visible {
 }
 
 /* ===================================
-   9. Таблица характеристик
+   15. Блок specs-table
    =================================== */
 
 .specs-table {
@@ -468,7 +499,7 @@ a:focus-visible {
 }
 
 /* ===================================
-   10. Отзывы
+   16. Блок reviews / review
    =================================== */
 
 .reviews {
@@ -495,7 +526,7 @@ a:focus-visible {
 }
 
 /* ===================================
-   11. Форма и модальное окно
+   17. Блок order-dialog
    =================================== */
 
 .order-dialog {
@@ -509,59 +540,103 @@ a:focus-visible {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.form-field {
+.order-dialog__title {
+  margin-top: 0;
+}
+
+/* ===================================
+   18. Блок order-form
+   =================================== */
+
+.order-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.order-form--page {
+  max-width: 600px;
+}
+
+.order-form__title {
+  margin: 0 0 var(--space-sm);
+  font-size: 1.5rem;
+}
+
+.order-form__field {
   margin-bottom: var(--space-md);
 }
 
-.form-field label {
-  display: block;
-  margin-bottom: var(--space-xs);
+.order-form__field--checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
 }
 
-.form-field input,
-.form-field select,
-.form-field textarea {
+.order-form__label {
+  display: block;
+  margin-bottom: var(--space-xs);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.order-form__field--checkbox .order-form__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: 0;
+}
+
+.order-form__input,
+.order-form__select,
+.order-form__textarea {
   width: 100%;
   padding: 10px 12px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   font: inherit;
+  transition: border-color 0.2s;
 }
 
-.form-field input[type="checkbox"] {
+.order-form__checkbox {
   width: auto;
 }
 
-.form-field small {
+.order-form__hint {
   display: block;
   margin-top: var(--space-xs);
   color: var(--color-muted);
 }
 
-.form-field input:hover,
-.form-field select:hover,
-.form-field textarea:hover {
+.order-form__input:hover,
+.order-form__select:hover,
+.order-form__textarea:hover {
   border-color: var(--color-primary);
 }
 
-.form-field input:focus-visible,
-.form-field select:focus-visible,
-.form-field textarea:focus-visible,
-.form-actions button:focus-visible {
+.order-form__input:focus-visible,
+.order-form__select:focus-visible,
+.order-form__textarea:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 3px;
 }
 
-[aria-invalid="true"] {
+.order-form__input[aria-invalid="true"],
+.order-form__select[aria-invalid="true"],
+.order-form__textarea[aria-invalid="true"] {
   border-color: var(--color-danger);
 }
 
-.form-actions {
+.order-form__actions {
   display: flex;
-  gap: 12px;
+  gap: var(--space-md);
   margin-top: var(--space-lg);
   flex-wrap: wrap;
 }
+
+/* ===================================
+   19. Блок success-message
+   =================================== */
 
 .success-message {
   max-width: var(--container-width);
@@ -571,24 +646,8 @@ a:focus-visible {
   background-color: var(--color-success-bg);
 }
 
-/* Форма на странице order.html / contacts.html */
-.order-form--page {
-  max-width: 600px;
-}
-
-.order-form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-}
-
-.order-form__title {
-  margin: 0 0 var(--space-sm);
-  font-size: 1.5rem;
-}
-
 /* ===================================
-   12. Контакты
+   20. Блок contacts-layout + contacts-info
    =================================== */
 
 .contacts-layout {
@@ -615,18 +674,18 @@ a:focus-visible {
   margin: 0;
 }
 
-.contacts-info__list li {
+.contacts-info__item {
   margin-bottom: var(--space-md);
   padding-bottom: var(--space-md);
   border-bottom: 1px solid var(--color-border);
 }
 
-.contacts-info__list li:last-child {
+.contacts-info__item:last-child {
   border-bottom: none;
 }
 
 /* ===================================
-   13. Подвал
+   21. Блок site-footer
    =================================== */
 
 .site-footer {
@@ -637,6 +696,7 @@ a:focus-visible {
 .site-footer__inner {
   max-width: var(--container-width);
   margin: 0 auto;
+  padding: var(--space-lg);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -644,7 +704,7 @@ a:focus-visible {
   gap: var(--space-md);
 }
 
-.site-footer__inner p {
+.site-footer__copy {
   margin: 0;
   font-size: 0.9rem;
 }
@@ -665,7 +725,7 @@ a:focus-visible {
 }
 
 /* ===================================
-   14. Подсветка якоря (:target)
+   22. Подсветка якоря
    =================================== */
 
 :target {
@@ -674,7 +734,7 @@ a:focus-visible {
 }
 
 /* ===================================
-   15. Адаптивность
+   23. Адаптивность
    =================================== */
 
 @media (max-width: 900px) {
@@ -699,7 +759,7 @@ a:focus-visible {
 }
 
 @media (max-width: 600px) {
-  .site-header {
+  .site-header__inner {
     flex-direction: column;
     align-items: flex-start;
   }
