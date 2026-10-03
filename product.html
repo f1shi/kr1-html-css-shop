@@ -12,16 +12,30 @@
     <script src="js/main.js" defer></script>
   </head>
   <body>
-    <header>
-      <div class="site-header">
-        <a class="site-logo" href="index.html">ShopProject</a>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-header__logo" href="index.html">ShopProject</a>
         <nav class="site-nav" aria-label="Основная навигация">
           <ul class="site-nav__list">
-            <li><a href="index.html" class="site-nav__link">Главная</a></li>
-            <li><a href="catalog.html" class="site-nav__link">Каталог</a></li>
-            <li><a href="product.html" class="site-nav__link site-nav__link--active">Товар</a></li>
-            <li><a href="order.html" class="site-nav__link">Заявка</a></li>
-            <li><a href="contacts.html" class="site-nav__link">Контакты</a></li>
+            <li class="site-nav__item">
+              <a href="index.html" class="site-nav__link">Главная</a>
+            </li>
+            <li class="site-nav__item">
+              <a href="catalog.html" class="site-nav__link">Каталог</a>
+            </li>
+            <li class="site-nav__item">
+              <a
+                href="product.html"
+                class="site-nav__link site-nav__link--active"
+                >Товар</a
+              >
+            </li>
+            <li class="site-nav__item">
+              <a href="order.html" class="site-nav__link">Заявка</a>
+            </li>
+            <li class="site-nav__item">
+              <a href="contacts.html" class="site-nav__link">Контакты</a>
+            </li>
           </ul>
         </nav>
       </div>
@@ -31,9 +45,9 @@
       <section class="section">
         <!-- Хлебные крошки -->
         <nav class="breadcrumbs" aria-label="Хлебные крошки">
-          <a href="index.html">Главная</a> /
-          <a href="catalog.html">Каталог</a> /
-          <span>Смартфон Galaxy X</span>
+          <a class="breadcrumbs__link" href="index.html">Главная</a>
+          <span class="breadcrumbs__current">Каталог</span>
+          <span class="breadcrumbs__current">Смартфон Galaxy X</span>
         </nav>
 
         <div class="product-detail">
@@ -42,12 +56,12 @@
             <h1 class="product-detail__title">Смартфон Galaxy X</h1>
             <p class="product-detail__price">54 990 руб.</p>
             <p class="product-detail__description">
-              Флагманский смартфон с ярким AMOLED-дисплеем 6.5", производительным
-              процессором и тройной камерой. Идеальный выбор для работы и
-              развлечений.
+              Флагманский смартфон с ярким AMOLED-дисплеем 6.5",
+              производительным процессором и тройной камерой. Идеальный выбор
+              для работы и развлечений.
             </p>
             <button
-              class="button product-card__button"
+              class="button button--primary product-card__button"
               type="button"
               data-product="Смартфон Galaxy X"
             >
@@ -59,7 +73,9 @@
         <!-- ТАБЛИЦА ХАРАКТЕРИСТИК -->
         <h2>Характеристики</h2>
         <table class="specs-table">
-          <caption>Технические характеристики Galaxy X</caption>
+          <caption>
+            Технические характеристики Galaxy X
+          </caption>
           <thead>
             <tr>
               <th scope="col">Параметр</th>
@@ -67,13 +83,34 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>Дисплей</td><td>6.5" AMOLED, 2400×1080</td></tr>
-            <tr><td>Процессор</td><td>Octa-core 2.8 ГГц</td></tr>
-            <tr><td>Оперативная память</td><td>8 ГБ</td></tr>
-            <tr><td>Встроенная память</td><td>128 ГБ</td></tr>
-            <tr><td>Камера</td><td>50 МП + 12 МП + 8 МП</td></tr>
-            <tr><td>Аккумулятор</td><td>5000 мА·ч</td></tr>
-            <tr><td>ОС</td><td>Android 14</td></tr>
+            <tr>
+              <td>Дисплей</td>
+              <td>6.5" AMOLED, 2400×1080</td>
+            </tr>
+            <tr>
+              <td>Процессор</td>
+              <td>Octa-core 2.8 ГГц</td>
+            </tr>
+            <tr>
+              <td>Оперативная память</td>
+              <td>8 ГБ</td>
+            </tr>
+            <tr>
+              <td>Встроенная память</td>
+              <td>128 ГБ</td>
+            </tr>
+            <tr>
+              <td>Камера</td>
+              <td>50 МП + 12 МП + 8 МП</td>
+            </tr>
+            <tr>
+              <td>Аккумулятор</td>
+              <td>5000 мА·ч</td>
+            </tr>
+            <tr>
+              <td>ОС</td>
+              <td>Android 14</td>
+            </tr>
           </tbody>
         </table>
 
@@ -82,7 +119,9 @@
         <div class="reviews">
           <article class="review">
             <p class="review__author">Анна К.</p>
-            <p class="review__text">Отличный смартфон! Быстрый, батарея держит два дня.</p>
+            <p class="review__text">
+              Отличный смартфон! Быстрый, батарея держит два дня.
+            </p>
           </article>
           <article class="review">
             <p class="review__author">Игорь М.</p>
@@ -94,8 +133,10 @@
 
     <footer class="site-footer">
       <div class="site-footer__inner">
-        <p>&copy; 2026 ShopProject. Все права защищены.</p>
-        <p>Дисциплина: фронтенд и бэкенд разработка</p>
+        <p class="site-footer__copy">© 2026 ShopProject. Все права защищены.</p>
+        <p class="site-footer__copy">
+          Дисциплина: фронтенд и бэкенд разработка
+        </p>
         <nav class="site-footer__nav">
           <a href="index.html">Главная</a>
           <a href="catalog.html">Каталог</a>
@@ -106,22 +147,51 @@
     </footer>
 
     <!-- МОДАЛЬНОЕ ОКНО -->
-    <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
-      <h2 id="order-dialog-title">Оформление заявки</h2>
-      <form class="order-form" id="order-form" action="#" method="post" novalidate>
+    <dialog
+      class="order-dialog"
+      id="order-dialog"
+      aria-labelledby="order-dialog-title"
+    >
+      <h2 class="order-dialog__title" id="order-dialog-title">
+        Оформление заявки
+      </h2>
+
+      <form
+        class="order-form"
+        id="order-form"
+        action="#"
+        method="post"
+        novalidate
+      >
         <input id="selected-product" name="selected-product" type="hidden" />
 
-        <div class="form-field">
-          <label for="order-name">Имя</label>
-          <input id="order-name" name="name" type="text" minlength="2" required />
-        </div>
-        <div class="form-field">
-          <label for="order-email">E-mail</label>
-          <input id="order-email" name="email" type="email" required />
-        </div>
-        <div class="form-field">
-          <label for="order-phone">Телефон</label>
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-name">Имя</label>
           <input
+            class="order-form__input"
+            id="order-name"
+            name="name"
+            type="text"
+            minlength="2"
+            required
+          />
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-email">E-mail</label>
+          <input
+            class="order-form__input"
+            id="order-email"
+            name="email"
+            type="email"
+            required
+          />
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-phone">Телефон</label>
+          <input
+            class="order-form__input"
             id="order-phone"
             name="phone"
             type="tel"
@@ -130,30 +200,60 @@
             pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
             required
           />
-          <small>Формат: +7 (900) 000-00-00</small>
+          <small class="order-form__hint">Формат: +7 (900) 000-00-00</small>
         </div>
-        <div class="form-field">
-          <label for="order-topic">Тема заявки</label>
-          <select id="order-topic" name="topic" required>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-topic">Тема заявки</label>
+          <select
+            class="order-form__select"
+            id="order-topic"
+            name="topic"
+            required
+          >
             <option value="">Выберите тему</option>
             <option value="product">Заказ товара</option>
             <option value="consultation">Консультация</option>
             <option value="delivery">Доставка</option>
           </select>
         </div>
-        <div class="form-field">
-          <label for="order-comment">Комментарий</label>
-          <textarea id="order-comment" name="comment" rows="4"></textarea>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-comment"
+            >Комментарий</label
+          >
+          <textarea
+            class="order-form__textarea"
+            id="order-comment"
+            name="comment"
+            rows="4"
+          ></textarea>
         </div>
-        <div class="form-field form-field--checkbox">
-          <label>
-            <input id="order-agreement" name="agreement" type="checkbox" required />
+
+        <div class="order-form__field order-form__field--checkbox">
+          <label class="order-form__label">
+            <input
+              class="order-form__checkbox"
+              id="order-agreement"
+              name="agreement"
+              type="checkbox"
+              required
+            />
             Я согласен на обработку данных
           </label>
         </div>
-        <div class="form-actions">
-          <button type="button" id="close-order-dialog">Закрыть</button>
-          <button type="submit">Отправить заявку</button>
+
+        <div class="order-form__actions">
+          <button
+            class="button button--outline"
+            type="button"
+            id="close-order-dialog"
+          >
+            Закрыть
+          </button>
+          <button class="button button--primary" type="submit">
+            Отправить заявку
+          </button>
         </div>
       </form>
     </dialog>
@@ -161,6 +261,7 @@
     <p class="success-message" id="success-message" hidden>
       Форма успешно отправлена!
     </p>
+
+    <a href="#" class="to-top" aria-label="Наверх">↑</a>
   </body>
-  <a href="#" class="to-top" aria-label="Наверх">↑</a>
 </html>
