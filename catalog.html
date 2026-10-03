@@ -18,7 +18,13 @@
         <nav class="site-nav" aria-label="Основная навигация">
           <ul class="site-nav__list">
             <li><a href="index.html" class="site-nav__link">Главная</a></li>
-            <li><a href="catalog.html" class="site-nav__link site-nav__link--active">Каталог</a></li>
+            <li>
+              <a
+                href="catalog.html"
+                class="site-nav__link site-nav__link--active"
+                >Каталог</a
+              >
+            </li>
             <li><a href="product.html" class="site-nav__link">Товар</a></li>
             <li><a href="order.html" class="site-nav__link">Заявка</a></li>
             <li><a href="contacts.html" class="site-nav__link">Контакты</a></li>
@@ -29,82 +35,146 @@
 
     <main>
       <section class="section">
+        <!-- Хлебные крошки -->
+        <nav class="breadcrumbs" aria-label="Хлебные крошки">
+          <a href="index.html">Главная</a>
+          <span>Каталог</span>
+        </nav>
+
         <h1>Каталог товаров</h1>
         <p>Выберите категорию и подберите технику по душе.</p>
 
+        <!-- CSS Grid: фильтры + товары -->
         <div class="catalog-layout">
           <!-- ASIDE: Фильтры -->
           <aside class="catalog-filters">
             <h2 class="catalog-filters__title">Фильтры</h2>
 
-            <div class="catalog-filters__group">
-              <h3 class="catalog-filters__subtitle">Категория</h3>
-              <ul class="catalog-filters__list">
-                <li><label><input type="checkbox" checked /> Смартфоны</label></li>
-                <li><label><input type="checkbox" /> Ноутбуки</label></li>
-                <li><label><input type="checkbox" /> Наушники</label></li>
-                <li><label><input type="checkbox" /> Аксессуары</label></li>
-              </ul>
-            </div>
+            <form class="filters-form" action="#" method="get">
+              <fieldset>
+                <legend>Категория</legend>
 
-            <div class="catalog-filters__group">
-              <h3 class="catalog-filters__subtitle">Цена</h3>
-              <label for="price-min">От</label>
-              <input type="number" id="price-min" placeholder="0" />
-              <label for="price-max">До</label>
-              <input type="number" id="price-max" placeholder="100000" />
-            </div>
+                <label>
+                  <input type="checkbox" name="category" value="all" checked />
+                  Все товары
+                </label>
 
-            <button class="button" type="button">Применить</button>
+                <label>
+                  <input type="checkbox" name="category" value="smartphones" />
+                  Смартфоны
+                </label>
+
+                <label>
+                  <input type="checkbox" name="category" value="laptops" />
+                  Ноутбуки
+                </label>
+
+                <label>
+                  <input type="checkbox" name="category" value="headphones" />
+                  Наушники
+                </label>
+
+                <label>
+                  <input type="checkbox" name="category" value="accessories" />
+                  Аксессуары
+                </label>
+              </fieldset>
+
+              <fieldset>
+                <legend>Цена</legend>
+
+                <label for="price-from">От</label>
+                <input
+                  id="price-from"
+                  name="price-from"
+                  type="number"
+                  min="0"
+                  placeholder="0"
+                />
+
+                <label for="price-to">До</label>
+                <input
+                  id="price-to"
+                  name="price-to"
+                  type="number"
+                  min="0"
+                  placeholder="100000"
+                />
+              </fieldset>
+
+              <button class="button" type="submit">Применить</button>
+            </form>
           </aside>
 
-          <!-- Сетка товаров -->
-          <div class="product-grid">
-            <article class="product-card">
-              <h3>Смартфон Galaxy X</h3>
-              <p>6.5" AMOLED, 128 ГБ, 8 ГБ ОЗУ.</p>
-              <p class="product-card__price">Цена: 54 990 руб.</p>
-              <a class="button product-card__button" href="product.html">Подробнее</a>
-            </article>
+          <!-- Список товаров -->
+          <section class="catalog-products">
+            <h2>Список товаров</h2>
 
-            <article class="product-card product-card--discount">
-              <span class="product-card__badge product-card__badge--discount">Скидка</span>
-              <h3>Ноутбук ProBook 15</h3>
-              <p>Intel Core i7, 16 ГБ, SSD 512 ГБ.</p>
-              <p class="product-card__price">Цена: 89 990 руб.</p>
-              <a class="button product-card__button" href="product.html">Подробнее</a>
-            </article>
+            <div class="products-grid">
+              <article class="product-card">
+                <h3>Смартфон Galaxy X</h3>
+                <p>6.5" AMOLED, 128 ГБ, 8 ГБ ОЗУ.</p>
+                <p class="product-card__price">Цена: 54 990 руб.</p>
+                <a class="button product-card__button" href="product.html"
+                  >Подробнее</a
+                >
+              </article>
 
-            <article class="product-card product-card--new">
-              <span class="product-card__badge product-card__badge--new">Новинка</span>
-              <h3>Наушники AirSound</h3>
-              <p>Беспроводные, активное шумоподавление.</p>
-              <p class="product-card__price">Цена: 12 990 руб.</p>
-              <a class="button product-card__button" href="product.html">Подробнее</a>
-            </article>
+              <article class="product-card product-card--discount">
+                <span class="product-card__badge product-card__badge--discount"
+                  >Скидка</span
+                >
+                <h3>Ноутбук ProBook 15</h3>
+                <p>Intel Core i7, 16 ГБ, SSD 512 ГБ.</p>
+                <p class="product-card__price">Цена: 89 990 руб.</p>
+                <a class="button product-card__button" href="product.html"
+                  >Подробнее</a
+                >
+              </article>
 
-            <article class="product-card">
-              <h3>Смарт-часы FitBand</h3>
-              <p>AMOLED, GPS, автономность до 7 дней.</p>
-              <p class="product-card__price">Цена: 9 990 руб.</p>
-              <a class="button product-card__button" href="product.html">Подробнее</a>
-            </article>
+              <article class="product-card product-card--new">
+                <span class="product-card__badge product-card__badge--new"
+                  >Новинка</span
+                >
+                <h3>Наушники AirSound</h3>
+                <p>Беспроводные, активное шумоподавление.</p>
+                <p class="product-card__price">Цена: 12 990 руб.</p>
+                <a class="button product-card__button" href="product.html"
+                  >Подробнее</a
+                >
+              </article>
 
-            <article class="product-card product-card--hit">
-              <span class="product-card__badge product-card__badge--hit">Хит</span>
-              <h3>Монитор UltraView 27"</h3>
-              <p>4K, IPS, 144 Гц.</p>
-              <p class="product-card__price">Цена: 32 990 руб.</p>
-              <a class="button product-card__button" href="product.html">Подробнее</a>
-            </article>
+              <article class="product-card">
+                <h3>Смарт-часы FitBand</h3>
+                <p>AMOLED, GPS, автономность до 7 дней.</p>
+                <p class="product-card__price">Цена: 9 990 руб.</p>
+                <a class="button product-card__button" href="product.html"
+                  >Подробнее</a
+                >
+              </article>
 
-            <article class="product-card">
-              <h3>Клавиатура MechPro</h3>
-              <p>Механическая, RGB-подсветка.</p>
-              <p class="product-card__price">Цена: 6 990 руб.</p>
-              <a class="button product-card__button" href="product.html">Подробнее</a>
-            </article>
-          </div>
+              <article class="product-card product-card--hit">
+                <span class="product-card__badge product-card__badge--hit"
+                  >Хит</span
+                >
+                <h3>Монитор UltraView 27"</h3>
+                <p>4K, IPS, 144 Гц.</p>
+                <p class="product-card__price">Цена: 32 990 руб.</p>
+                <a class="button product-card__button" href="product.html"
+                  >Подробнее</a
+                >
+              </article>
+
+              <article class="product-card">
+                <h3>Клавиатура MechPro</h3>
+                <p>Механическая, RGB-подсветка.</p>
+                <p class="product-card__price">Цена: 6 990 руб.</p>
+                <a class="button product-card__button" href="product.html"
+                  >Подробнее</a
+                >
+              </article>
+            </div>
+          </section>
         </div>
       </section>
     </main>
@@ -123,14 +193,30 @@
     </footer>
 
     <!-- МОДАЛЬНОЕ ОКНО -->
-    <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
+    <dialog
+      class="order-dialog"
+      id="order-dialog"
+      aria-labelledby="order-dialog-title"
+    >
       <h2 id="order-dialog-title">Оформление заявки</h2>
-      <form class="order-form" id="order-form" action="#" method="post" novalidate>
+      <form
+        class="order-form"
+        id="order-form"
+        action="#"
+        method="post"
+        novalidate
+      >
         <input id="selected-product" name="selected-product" type="hidden" />
 
         <div class="form-field">
           <label for="order-name">Имя</label>
-          <input id="order-name" name="name" type="text" minlength="2" required />
+          <input
+            id="order-name"
+            name="name"
+            type="text"
+            minlength="2"
+            required
+          />
         </div>
         <div class="form-field">
           <label for="order-email">E-mail</label>
@@ -164,7 +250,12 @@
         </div>
         <div class="form-field form-field--checkbox">
           <label>
-            <input id="order-agreement" name="agreement" type="checkbox" required />
+            <input
+              id="order-agreement"
+              name="agreement"
+              type="checkbox"
+              required
+            />
             Я согласен на обработку данных
           </label>
         </div>
