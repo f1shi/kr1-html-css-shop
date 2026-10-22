@@ -3,30 +3,57 @@
    ========================================================= */
 
 const orderDialog = document.getElementById('order-dialog');
-const orderButtons = document.querySelectorAll('.product-card__button[data-product]');
-const closeDialogButton = document.getElementById('close-order-dialog');
+const orderButtons = document.querySelectorAll('button[data-product]');
+const closeDialogButtons = document.querySelectorAll('[data-close-dialog]');
 const selectedProductInput = document.getElementById('selected-product');
+const productNameOutput = document.getElementById('order-dialog-product-name');
+const dialogBody = document.getElementById('order-dialog-body');
+const dialogSuccess = document.getElementById('order-dialog-success');
+const orderForm = document.getElementById('order-form');
+
+// Возвращаем окно в исходное состояние: форма видна, ошибки сброшены
+function resetOrderDialog() {
+  if (dialogBody) dialogBody.hidden = false;
+  if (dialogSuccess) dialogSuccess.hidden = true;
+  if (orderForm) {
+    Array.from(orderForm.elements).forEach((element) => {
+      element.removeAttribute('aria-invalid');
+    });
+  }
+}
 
 if (orderDialog && orderButtons.length > 0) {
   orderButtons.forEach((button) => {
     button.addEventListener('click', () => {
       const productName = button.dataset.product || '';
       if (selectedProductInput) selectedProductInput.value = productName;
+      if (productNameOutput) productNameOutput.textContent = productName || 'не выбран';
+      resetOrderDialog();
       orderDialog.showModal();
+      document.getElementById('order-name')?.focus();
     });
   });
 }
 
-if (closeDialogButton && orderDialog) {
-  closeDialogButton.addEventListener('click', () => {
-    orderDialog.close();
+if (orderDialog) {
+  closeDialogButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      orderDialog.close();
+    });
+  });
+
+  // Клик по затемнённой подложке закрывает окно
+  orderDialog.addEventListener('click', (event) => {
+    if (event.target === orderDialog) orderDialog.close();
   });
 }
 
-const orderForm = document.getElementById('order-form');
-const successMessage = document.getElementById('success-message');
-
 if (orderForm) {
+  // Как только пользователь исправляет поле, снимаем подсветку ошибки
+  orderForm.addEventListener('input', (event) => {
+    if (event.target.checkValidity()) event.target.removeAttribute('aria-invalid');
+  });
+
   orderForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
@@ -48,9 +75,12 @@ if (orderForm) {
       return;
     }
 
-    if (successMessage) successMessage.hidden = false;
     orderForm.reset();
-    if (orderDialog) orderDialog.close();
+    if (dialogBody) dialogBody.hidden = true;
+    if (dialogSuccess) {
+      dialogSuccess.hidden = false;
+      dialogSuccess.querySelector('[data-close-dialog]')?.focus();
+    }
   });
 }
 

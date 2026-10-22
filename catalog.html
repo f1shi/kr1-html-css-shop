@@ -112,102 +112,463 @@
                 />
               </fieldset>
 
-              <button class="button button--primary" type="submit">
-                Применить
-              </button>
+              <fieldset class="filters-form__group">
+                <legend class="filters-form__legend">Рейтинг</legend>
+
+                <label class="filters-form__label">
+                  <input type="radio" name="rating" value="any" checked />
+                  Любой
+                </label>
+
+                <label class="filters-form__label">
+                  <input type="radio" name="rating" value="4.5" />
+                  ★ 4.5 и выше
+                </label>
+
+                <label class="filters-form__label">
+                  <input type="radio" name="rating" value="4" />
+                  ★ 4.0 и выше
+                </label>
+              </fieldset>
+
+              <fieldset class="filters-form__group">
+                <legend class="filters-form__legend">Наличие</legend>
+
+                <label class="filters-form__label">
+                  <input type="checkbox" name="in-stock" value="1" />
+                  Только в наличии
+                </label>
+
+                <label class="filters-form__label">
+                  <input type="checkbox" name="sale" value="1" />
+                  Со скидкой
+                </label>
+              </fieldset>
+
+              <div class="filters-form__actions">
+                <button class="button button--primary" type="submit">
+                  Применить
+                </button>
+                <button class="button button--outline" type="reset">
+                  Сбросить
+                </button>
+              </div>
             </form>
           </aside>
 
           <!-- Список товаров -->
           <section class="catalog-products">
-            <h2>Список товаров</h2>
+            <div class="catalog-toolbar">
+              <h2 class="catalog-toolbar__title">
+                Список товаров
+                <span class="catalog-toolbar__count">12 товаров</span>
+              </h2>
+
+              <form class="catalog-toolbar__sort" action="#" method="get">
+                <label class="catalog-toolbar__label" for="sort">Сортировка:</label>
+                <select class="filters-form__input catalog-toolbar__select" id="sort" name="sort">
+                  <option value="popular">По популярности</option>
+                  <option value="price-asc">Сначала дешевле</option>
+                  <option value="price-desc">Сначала дороже</option>
+                  <option value="rating">По рейтингу</option>
+                  <option value="new">Новинки</option>
+                </select>
+              </form>
+            </div>
+
+            <ul class="catalog-tags" aria-label="Быстрый выбор категории">
+              <li><a class="catalog-tags__link catalog-tags__link--active" href="catalog.html" aria-current="page">Все</a></li>
+              <li><a class="catalog-tags__link" href="#">Смартфоны</a></li>
+              <li><a class="catalog-tags__link" href="#">Ноутбуки</a></li>
+              <li><a class="catalog-tags__link" href="#">Наушники</a></li>
+              <li><a class="catalog-tags__link" href="#">Аксессуары</a></li>
+              <li><a class="catalog-tags__link" href="#">Скидки</a></li>
+            </ul>
 
             <div class="products-grid">
-              <article class="product-card">
-                <h3 class="product-card__title">Смартфон Galaxy X</h3>
-                <p class="product-card__description">
-                  6.5" AMOLED, 128 ГБ, 8 ГБ ОЗУ.
-                </p>
-                <p class="product-card__price">Цена: 54 990 руб.</p>
-                <a
-                  class="button button--primary product-card__button"
-                  href="product.html"
-                  >Подробнее</a
+              <article class="product-card product-card--hit">
+                <span class="product-card__badge product-card__badge--hit"
+                  >Хит</span
                 >
+                <div class="product-card__image" aria-hidden="true">📱</div>
+                <p class="product-card__category">Смартфоны</p>
+                <h3 class="product-card__title">Смартфон Galaxy X</h3>
+                <p class="product-card__description">6.5" AMOLED, 128 ГБ, 8 ГБ ОЗУ.</p>
+                <p class="product-card__rating" aria-label="Рейтинг 4.8 из 5">
+                  ★ 4.8
+                  <span class="product-card__reviews">(124 отзыва)</span>
+                </p>
+                <p class="product-card__stock product-card__stock--in">
+                  В наличии
+                </p>
+                <p class="product-card__price">
+                  54 990 руб.
+                </p>
+                <div class="product-card__actions">
+                  <a class="button button--outline button--small" href="product.html"
+                    >Подробнее</a
+                  >
+                  <button
+                    class="button button--primary button--small product-card__button"
+                    type="button"
+                    data-product='Смартфон Galaxy X'
+                  >
+                    В заявку
+                  </button>
+                </div>
               </article>
 
               <article class="product-card product-card--discount">
                 <span class="product-card__badge product-card__badge--discount"
                   >Скидка</span
                 >
+                <div class="product-card__image" aria-hidden="true">💻</div>
+                <p class="product-card__category">Ноутбуки</p>
                 <h3 class="product-card__title">Ноутбук ProBook 15</h3>
-                <p class="product-card__description">
-                  Intel Core i7, 16 ГБ, SSD 512 ГБ.
+                <p class="product-card__description">Intel Core i7, 16 ГБ, SSD 512 ГБ.</p>
+                <p class="product-card__rating" aria-label="Рейтинг 4.6 из 5">
+                  ★ 4.6
+                  <span class="product-card__reviews">(58 отзывов)</span>
                 </p>
-                <p class="product-card__price">Цена: 89 990 руб.</p>
-                <a
-                  class="button button--primary product-card__button"
-                  href="product.html"
-                  >Подробнее</a
-                >
+                <p class="product-card__stock product-card__stock--in">
+                  В наличии
+                </p>
+                <p class="product-card__price">
+                  89 990 руб.
+                  <s class="product-card__price-old">99 990 руб.</s>
+                </p>
+                <div class="product-card__actions">
+                  <a class="button button--outline button--small" href="product.html"
+                    >Подробнее</a
+                  >
+                  <button
+                    class="button button--primary button--small product-card__button"
+                    type="button"
+                    data-product='Ноутбук ProBook 15'
+                  >
+                    В заявку
+                  </button>
+                </div>
               </article>
 
               <article class="product-card product-card--new">
                 <span class="product-card__badge product-card__badge--new"
                   >Новинка</span
                 >
+                <div class="product-card__image" aria-hidden="true">🎧</div>
+                <p class="product-card__category">Наушники</p>
                 <h3 class="product-card__title">Наушники AirSound</h3>
-                <p class="product-card__description">
-                  Беспроводные, активное шумоподавление.
+                <p class="product-card__description">Беспроводные, активное шумоподавление.</p>
+                <p class="product-card__rating" aria-label="Рейтинг 4.7 из 5">
+                  ★ 4.7
+                  <span class="product-card__reviews">(86 отзывов)</span>
                 </p>
-                <p class="product-card__price">Цена: 12 990 руб.</p>
-                <a
-                  class="button button--primary product-card__button"
-                  href="product.html"
-                  >Подробнее</a
-                >
+                <p class="product-card__stock product-card__stock--in">
+                  В наличии
+                </p>
+                <p class="product-card__price">
+                  12 990 руб.
+                </p>
+                <div class="product-card__actions">
+                  <a class="button button--outline button--small" href="product.html"
+                    >Подробнее</a
+                  >
+                  <button
+                    class="button button--primary button--small product-card__button"
+                    type="button"
+                    data-product='Наушники AirSound'
+                  >
+                    В заявку
+                  </button>
+                </div>
               </article>
 
               <article class="product-card">
+                <div class="product-card__image" aria-hidden="true">⌚</div>
+                <p class="product-card__category">Аксессуары</p>
                 <h3 class="product-card__title">Смарт-часы FitBand</h3>
-                <p class="product-card__description">
-                  AMOLED, GPS, автономность до 7 дней.
+                <p class="product-card__description">AMOLED, GPS, автономность до 7 дней.</p>
+                <p class="product-card__rating" aria-label="Рейтинг 4.4 из 5">
+                  ★ 4.4
+                  <span class="product-card__reviews">(41 отзыв)</span>
                 </p>
-                <p class="product-card__price">Цена: 9 990 руб.</p>
-                <a
-                  class="button button--primary product-card__button"
-                  href="product.html"
-                  >Подробнее</a
-                >
+                <p class="product-card__stock product-card__stock--low">
+                  Осталось 3 шт.
+                </p>
+                <p class="product-card__price">
+                  9 990 руб.
+                </p>
+                <div class="product-card__actions">
+                  <a class="button button--outline button--small" href="product.html"
+                    >Подробнее</a
+                  >
+                  <button
+                    class="button button--primary button--small product-card__button"
+                    type="button"
+                    data-product='Смарт-часы FitBand'
+                  >
+                    В заявку
+                  </button>
+                </div>
               </article>
 
               <article class="product-card product-card--hit">
                 <span class="product-card__badge product-card__badge--hit"
                   >Хит</span
                 >
+                <div class="product-card__image" aria-hidden="true">🖥️</div>
+                <p class="product-card__category">Аксессуары</p>
                 <h3 class="product-card__title">Монитор UltraView 27"</h3>
                 <p class="product-card__description">4K, IPS, 144 Гц.</p>
-                <p class="product-card__price">Цена: 32 990 руб.</p>
-                <a
-                  class="button button--primary product-card__button"
-                  href="product.html"
-                  >Подробнее</a
-                >
+                <p class="product-card__rating" aria-label="Рейтинг 4.9 из 5">
+                  ★ 4.9
+                  <span class="product-card__reviews">(203 отзыва)</span>
+                </p>
+                <p class="product-card__stock product-card__stock--in">
+                  В наличии
+                </p>
+                <p class="product-card__price">
+                  32 990 руб.
+                </p>
+                <div class="product-card__actions">
+                  <a class="button button--outline button--small" href="product.html"
+                    >Подробнее</a
+                  >
+                  <button
+                    class="button button--primary button--small product-card__button"
+                    type="button"
+                    data-product='Монитор UltraView 27"'
+                  >
+                    В заявку
+                  </button>
+                </div>
               </article>
 
               <article class="product-card">
+                <div class="product-card__image" aria-hidden="true">⌨️</div>
+                <p class="product-card__category">Аксессуары</p>
                 <h3 class="product-card__title">Клавиатура MechPro</h3>
-                <p class="product-card__description">
-                  Механическая, RGB-подсветка.
+                <p class="product-card__description">Механическая, RGB-подсветка.</p>
+                <p class="product-card__rating" aria-label="Рейтинг 4.5 из 5">
+                  ★ 4.5
+                  <span class="product-card__reviews">(67 отзывов)</span>
                 </p>
-                <p class="product-card__price">Цена: 6 990 руб.</p>
-                <a
-                  class="button button--primary product-card__button"
-                  href="product.html"
-                  >Подробнее</a
+                <p class="product-card__stock product-card__stock--in">
+                  В наличии
+                </p>
+                <p class="product-card__price">
+                  6 990 руб.
+                </p>
+                <div class="product-card__actions">
+                  <a class="button button--outline button--small" href="product.html"
+                    >Подробнее</a
+                  >
+                  <button
+                    class="button button--primary button--small product-card__button"
+                    type="button"
+                    data-product='Клавиатура MechPro'
+                  >
+                    В заявку
+                  </button>
+                </div>
+              </article>
+
+              <article class="product-card product-card--discount">
+                <span class="product-card__badge product-card__badge--discount"
+                  >Скидка</span
                 >
+                <div class="product-card__image" aria-hidden="true">📱</div>
+                <p class="product-card__category">Смартфоны</p>
+                <h3 class="product-card__title">Смартфон Nova Lite</h3>
+                <p class="product-card__description">6.1" IPS, 64 ГБ, 4 ГБ ОЗУ.</p>
+                <p class="product-card__rating" aria-label="Рейтинг 4.2 из 5">
+                  ★ 4.2
+                  <span class="product-card__reviews">(35 отзывов)</span>
+                </p>
+                <p class="product-card__stock product-card__stock--low">
+                  Осталось 3 шт.
+                </p>
+                <p class="product-card__price">
+                  24 990 руб.
+                  <s class="product-card__price-old">27 990 руб.</s>
+                </p>
+                <div class="product-card__actions">
+                  <a class="button button--outline button--small" href="product.html"
+                    >Подробнее</a
+                  >
+                  <button
+                    class="button button--primary button--small product-card__button"
+                    type="button"
+                    data-product='Смартфон Nova Lite'
+                  >
+                    В заявку
+                  </button>
+                </div>
+              </article>
+
+              <article class="product-card product-card--new">
+                <span class="product-card__badge product-card__badge--new"
+                  >Новинка</span
+                >
+                <div class="product-card__image" aria-hidden="true">💻</div>
+                <p class="product-card__category">Ноутбуки</p>
+                <h3 class="product-card__title">Ультрабук AirBook 13</h3>
+                <p class="product-card__description">Вес 1.1 кг, 16 ГБ, до 15 часов работы.</p>
+                <p class="product-card__rating" aria-label="Рейтинг 4.7 из 5">
+                  ★ 4.7
+                  <span class="product-card__reviews">(19 отзывов)</span>
+                </p>
+                <p class="product-card__stock product-card__stock--in">
+                  В наличии
+                </p>
+                <p class="product-card__price">
+                  74 990 руб.
+                </p>
+                <div class="product-card__actions">
+                  <a class="button button--outline button--small" href="product.html"
+                    >Подробнее</a
+                  >
+                  <button
+                    class="button button--primary button--small product-card__button"
+                    type="button"
+                    data-product='Ультрабук AirBook 13'
+                  >
+                    В заявку
+                  </button>
+                </div>
+              </article>
+
+              <article class="product-card">
+                <div class="product-card__image" aria-hidden="true">🎧</div>
+                <p class="product-card__category">Наушники</p>
+                <h3 class="product-card__title">Наушники BassPro</h3>
+                <p class="product-card__description">Накладные, проводное и Bluetooth-подключение.</p>
+                <p class="product-card__rating" aria-label="Рейтинг 4.3 из 5">
+                  ★ 4.3
+                  <span class="product-card__reviews">(52 отзыва)</span>
+                </p>
+                <p class="product-card__stock product-card__stock--in">
+                  В наличии
+                </p>
+                <p class="product-card__price">
+                  7 490 руб.
+                </p>
+                <div class="product-card__actions">
+                  <a class="button button--outline button--small" href="product.html"
+                    >Подробнее</a
+                  >
+                  <button
+                    class="button button--primary button--small product-card__button"
+                    type="button"
+                    data-product='Наушники BassPro'
+                  >
+                    В заявку
+                  </button>
+                </div>
+              </article>
+
+              <article class="product-card product-card--discount">
+                <span class="product-card__badge product-card__badge--discount"
+                  >Скидка</span
+                >
+                <div class="product-card__image" aria-hidden="true">🔊</div>
+                <p class="product-card__category">Аксессуары</p>
+                <h3 class="product-card__title">Колонка BoomBox Mini</h3>
+                <p class="product-card__description">Защита IP67, 12 часов работы.</p>
+                <p class="product-card__rating" aria-label="Рейтинг 4.6 из 5">
+                  ★ 4.6
+                  <span class="product-card__reviews">(98 отзывов)</span>
+                </p>
+                <p class="product-card__stock product-card__stock--in">
+                  В наличии
+                </p>
+                <p class="product-card__price">
+                  4 490 руб.
+                  <s class="product-card__price-old">5 990 руб.</s>
+                </p>
+                <div class="product-card__actions">
+                  <a class="button button--outline button--small" href="product.html"
+                    >Подробнее</a
+                  >
+                  <button
+                    class="button button--primary button--small product-card__button"
+                    type="button"
+                    data-product='Колонка BoomBox Mini'
+                  >
+                    В заявку
+                  </button>
+                </div>
+              </article>
+
+              <article class="product-card product-card--sold-out">
+                <span class="product-card__badge product-card__badge--sold-out"
+                  >Нет в наличии</span
+                >
+                <div class="product-card__image" aria-hidden="true">📲</div>
+                <p class="product-card__category">Смартфоны</p>
+                <h3 class="product-card__title">Планшет TabOne 10</h3>
+                <p class="product-card__description">10.4" IPS, 128 ГБ, стилус в комплекте.</p>
+                <p class="product-card__rating" aria-label="Рейтинг 4.5 из 5">
+                  ★ 4.5
+                  <span class="product-card__reviews">(27 отзывов)</span>
+                </p>
+                <p class="product-card__stock product-card__stock--out">
+                  Нет в наличии
+                </p>
+                <p class="product-card__price">
+                  29 990 руб.
+                </p>
+                <div class="product-card__actions">
+                  <a class="button button--outline button--small" href="product.html"
+                    >Подробнее</a
+                  >
+                  <button
+                    class="button button--primary button--small product-card__button"
+                    type="button"
+                    disabled
+                  >
+                    Нет в наличии
+                  </button>
+                </div>
+              </article>
+
+              <article class="product-card">
+                <div class="product-card__image" aria-hidden="true">💾</div>
+                <p class="product-card__category">Аксессуары</p>
+                <h3 class="product-card__title">Внешний SSD Flash 1 ТБ</h3>
+                <p class="product-card__description">USB-C, скорость до 1050 МБ/с.</p>
+                <p class="product-card__rating" aria-label="Рейтинг 4.8 из 5">
+                  ★ 4.8
+                  <span class="product-card__reviews">(74 отзыва)</span>
+                </p>
+                <p class="product-card__stock product-card__stock--in">
+                  В наличии
+                </p>
+                <p class="product-card__price">
+                  8 990 руб.
+                </p>
+                <div class="product-card__actions">
+                  <a class="button button--outline button--small" href="product.html"
+                    >Подробнее</a
+                  >
+                  <button
+                    class="button button--primary button--small product-card__button"
+                    type="button"
+                    data-product='Внешний SSD Flash 1 ТБ'
+                  >
+                    В заявку
+                  </button>
+                </div>
               </article>
             </div>
+
+            <nav class="pagination" aria-label="Страницы каталога">
+              <span class="pagination__link pagination__link--disabled" aria-disabled="true">← Назад</span>
+              <a class="pagination__link pagination__link--current" href="catalog.html" aria-current="page">1</a>
+              <a class="pagination__link" href="#">2</a>
+              <a class="pagination__link" href="#">3</a>
+              <a class="pagination__link" href="#">Вперёд →</a>
+            </nav>
           </section>
         </div>
       </section>
@@ -233,116 +594,153 @@
       class="order-dialog"
       id="order-dialog"
       aria-labelledby="order-dialog-title"
+      aria-describedby="order-dialog-product"
     >
-      <h2 class="order-dialog__title" id="order-dialog-title">
-        Оформление заявки
-      </h2>
-
-      <form
-        class="order-form"
-        id="order-form"
-        action="#"
-        method="post"
-        novalidate
+      <button
+        class="order-dialog__close"
+        type="button"
+        data-close-dialog
+        aria-label="Закрыть окно"
       >
-        <input id="selected-product" name="selected-product" type="hidden" />
+        ×
+      </button>
 
-        <div class="order-form__field">
-          <label class="order-form__label" for="order-name">Имя</label>
-          <input
-            class="order-form__input"
-            id="order-name"
-            name="name"
-            type="text"
-            minlength="2"
-            required
-          />
-        </div>
-
-        <div class="order-form__field">
-          <label class="order-form__label" for="order-email">E-mail</label>
-          <input
-            class="order-form__input"
-            id="order-email"
-            name="email"
-            type="email"
-            required
-          />
-        </div>
-
-        <div class="order-form__field">
-          <label class="order-form__label" for="order-phone">Телефон</label>
-          <input
-            class="order-form__input"
-            id="order-phone"
-            name="phone"
-            type="tel"
-            inputmode="tel"
-            placeholder="+7 (900) 000-00-00"
-            pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
-            required
-          />
-          <small class="order-form__hint">Формат: +7 (900) 000-00-00</small>
-        </div>
-
-        <div class="order-form__field">
-          <label class="order-form__label" for="order-topic">Тема заявки</label>
-          <select
-            class="order-form__select"
-            id="order-topic"
-            name="topic"
-            required
+      <div class="order-dialog__body" id="order-dialog-body">
+        <h2 class="order-dialog__title" id="order-dialog-title">
+          Оформление заявки
+        </h2>
+        <p class="order-dialog__product" id="order-dialog-product">
+          Товар:
+          <strong class="order-dialog__product-name" id="order-dialog-product-name"
+            >не выбран</strong
           >
-            <option value="">Выберите тему</option>
-            <option value="product">Заказ товара</option>
-            <option value="consultation">Консультация</option>
-            <option value="delivery">Доставка</option>
-          </select>
-        </div>
+        </p>
 
-        <div class="order-form__field">
-          <label class="order-form__label" for="order-comment"
-            >Комментарий</label
-          >
-          <textarea
-            class="order-form__textarea"
-            id="order-comment"
-            name="comment"
-            rows="4"
-          ></textarea>
-        </div>
+        <form
+          class="order-form"
+          id="order-form"
+          action="#"
+          method="post"
+          novalidate
+        >
+          <input id="selected-product" name="selected-product" type="hidden" />
 
-        <div class="order-form__field order-form__field--checkbox">
-          <label class="order-form__label">
+          <div class="order-form__field">
+            <label class="order-form__label order-form__label--required" for="order-name"
+              >Имя</label
+            >
             <input
-              class="order-form__checkbox"
-              id="order-agreement"
-              name="agreement"
-              type="checkbox"
+              class="order-form__input"
+              id="order-name"
+              name="name"
+              type="text"
+              autocomplete="name"
+              minlength="2"
               required
             />
-            Я согласен на обработку данных
-          </label>
-        </div>
+          </div>
 
-        <div class="order-form__actions">
-          <button
-            class="button button--outline"
-            type="button"
-            id="close-order-dialog"
-          >
-            Закрыть
-          </button>
-          <button class="button button--primary" type="submit">
-            Отправить заявку
-          </button>
-        </div>
-      </form>
+          <div class="order-form__field">
+            <label class="order-form__label order-form__label--required" for="order-email"
+              >E-mail</label
+            >
+            <input
+              class="order-form__input"
+              id="order-email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <div class="order-form__field">
+            <label class="order-form__label order-form__label--required" for="order-phone"
+              >Телефон</label
+            >
+            <input
+              class="order-form__input"
+              id="order-phone"
+              name="phone"
+              type="tel"
+              inputmode="tel"
+              autocomplete="tel"
+              placeholder="+7 (900) 000-00-00"
+              pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
+              required
+            />
+            <small class="order-form__hint">Формат: +7 (900) 000-00-00</small>
+          </div>
+
+          <div class="order-form__field">
+            <label class="order-form__label order-form__label--required" for="order-topic"
+              >Тема заявки</label
+            >
+            <select
+              class="order-form__select"
+              id="order-topic"
+              name="topic"
+              required
+            >
+              <option value="">Выберите тему</option>
+              <option value="product">Заказ товара</option>
+              <option value="consultation">Консультация</option>
+              <option value="delivery">Доставка</option>
+            </select>
+          </div>
+
+          <div class="order-form__field">
+            <label class="order-form__label" for="order-comment"
+              >Комментарий</label
+            >
+            <textarea
+              class="order-form__textarea"
+              id="order-comment"
+              name="comment"
+              rows="3"
+            ></textarea>
+          </div>
+
+          <div class="order-form__field order-form__field--checkbox">
+            <label class="order-form__label">
+              <input
+                class="order-form__checkbox"
+                id="order-agreement"
+                name="agreement"
+                type="checkbox"
+                required
+              />
+              Я согласен на обработку данных
+            </label>
+          </div>
+
+          <div class="order-form__actions">
+            <button
+              class="button button--outline"
+              type="button"
+              id="close-order-dialog"
+              data-close-dialog
+            >
+              Отмена
+            </button>
+            <button class="button button--primary" type="submit">
+              Отправить заявку
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="order-dialog__success" id="order-dialog-success" hidden>
+        <p class="order-dialog__success-icon" aria-hidden="true">✓</p>
+        <h2 class="order-dialog__title">Заявка отправлена!</h2>
+        <p class="order-dialog__success-text">
+          Спасибо! Менеджер свяжется с вами в течение рабочего дня.
+        </p>
+        <button class="button button--primary" type="button" data-close-dialog>
+          Готово
+        </button>
+      </div>
     </dialog>
-
-    <p class="success-message" id="success-message" hidden>
-      Форма успешно отправлена!
-    </p>
 
     <a href="#" class="to-top" aria-label="Наверх">↑</a>
   </body>
